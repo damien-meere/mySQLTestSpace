@@ -1,0 +1,161 @@
+mysql> show tables;
++-------------------+
+| Tables_in_Chinook |
++-------------------+
+| Album             |
+| Artist            |
+| Customer          |
+| Employee          |
+| Genre             |
+| Invoice           |
+| InvoiceLine       |
+| MediaType         |
+| Playlist          |
+| PlaylistTrack     |
+| Track             |
++-------------------+
+11 rows in set (0.00 sec)
+
+mysql> desc Artist;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| ArtistId | int(11)      | NO   | PRI | NULL    | auto_increment |
+| Name     | varchar(120) | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> source test.sql
++----------+
+| count(*) |
++----------+
+|     3503 |
++----------+
+1 row in set (0.00 sec)
+
++----------+
+| count(*) |
++----------+
+|      275 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from Album limit 10;
++---------+---------------------------------------+----------+
+| AlbumId | Title                                 | ArtistId |
++---------+---------------------------------------+----------+
+|       1 | For Those About To Rock We Salute You |        1 |
+|       2 | Balls to the Wall                     |        2 |
+|       3 | Restless and Wild                     |        2 |
+|       4 | Let There Be Rock                     |        1 |
+|       5 | Big Ones                              |        3 |
+|       6 | Jagged Little Pill                    |        4 |
+|       7 | Facelift                              |        5 |
+|       8 | Warner 25 Anos                        |        6 |
+|       9 | Plays Metallica By Four Cellos        |        7 |
+|      10 | Audioslave                            |        8 |
++---------+---------------------------------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> source test.sql
++---------------------------------------+-----------------------+
+| Title                                 | Name                  |
++---------------------------------------+-----------------------+
+| For Those About To Rock We Salute You | AC/DC                 |
+| Balls to the Wall                     | Accept                |
+| Restless and Wild                     | Accept                |
+| Let There Be Rock                     | AC/DC                 |
+| Big Ones                              | Aerosmith             |
+| Jagged Little Pill                    | Alanis Morissette     |
+| Facelift                              | Alice In Chains       |
+| Warner 25 Anos                        | Antônio Carlos Jobim  |
+| Plays Metallica By Four Cellos        | Apocalyptica          |
+| Audioslave                            | Audioslave            |
++---------------------------------------+-----------------------+
+10 rows in set (0.00 sec)
+
+mysql> source test.sql
++--------------------------------------------------+-----------------------+
+| Title                                            | Name                  |
++--------------------------------------------------+-----------------------+
+| For Those About To Rock We Salute You            | AC/DC                 |
+| Balls to the Wall                                | Accept                |
+| Restless and Wild                                | Accept                |
+| Let There Be Rock                                | AC/DC                 |
+| Big Ones                                         | Aerosmith             |
+| Jagged Little Pill                               | Alanis Morissette     |
+| Facelift                                         | Alice In Chains       |
+| Warner 25 Anos                                   | Antônio Carlos Jobim  |
+| Plays Metallica By Four Cellos                   | Apocalyptica          |
+| Audioslave                                       | Audioslave            |
+| Out Of Exile                                     | Audioslave            |
+| BackBeat Soundtrack                              | BackBeat              |
+| The Best Of Billy Cobham                         | Billy Cobham          |
+| Alcohol Fueled Brewtality Live! [Disc 1]         | Black Label Society   |
+| Alcohol Fueled Brewtality Live! [Disc 2]         | Black Label Society   |
+| Black Sabbath                                    | Black Sabbath         |
+| Black Sabbath Vol. 4 (Remaster)                  | Black Sabbath         |
+| Body Count                                       | Body Count            |
+| Chemical Wedding                                 | Bruce Dickinson       |
+| The Best Of Buddy Guy - The Millenium Collection | Buddy Guy             |
++--------------------------------------------------+-----------------------+
+20 rows in set (0.00 sec)
+
+mysql> insert into Genre (Name) values('Trad');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select LAST_INSERT_ID();
++------------------+
+| LAST_INSERT_ID() |
++------------------+
+|               26 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from Genre where GenreID = 26;
++---------+------+
+| GenreId | Name |
++---------+------+
+|      26 | Trad |
++---------+------+
+1 row in set (0.00 sec)
+
+mysql> update Genre set Name = 'Traditional' where Name = 'Trad'
+    -> ;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from Genre;
++---------+--------------------+
+| GenreId | Name               |
++---------+--------------------+
+|       1 | Rock               |
+|       2 | Jazz               |
+|       3 | Metal              |
+|       4 | Alternative & Punk |
+|       5 | Rock And Roll      |
+|       6 | Blues              |
+|       7 | Latin              |
+|       8 | Reggae             |
+|       9 | Pop                |
+|      10 | Soundtrack         |
+|      11 | Bossa Nova         |
+|      12 | Easy Listening     |
+|      13 | Heavy Metal        |
+|      14 | R&B/Soul           |
+|      15 | Electronica/Dance  |
+|      16 | World              |
+|      17 | Hip Hop/Rap        |
+|      18 | Science Fiction    |
+|      19 | TV Shows           |
+|      20 | Sci Fi & Fantasy   |
+|      21 | Drama              |
+|      22 | Comedy             |
+|      23 | Alternative        |
+|      24 | Classical          |
+|      25 | Opera              |
+|      26 | Traditional        |
++---------+--------------------+
+26 rows in set (0.00 sec)
+
+mysql> notee
